@@ -19,7 +19,7 @@ El respositorio cuenta con los siguientes archivos:
 
  3. Uso Local de Consola Git Bash
 1. Clonar el proyecto:
-   git clone https://github.com/USUARIO_LOCAL/Ev1-DevOps.git
+   **git clone https://github.com/USUARIO_LOCAL/Ev1-DevOps.git**
 2. Entrar a la carpeta:
    cd Ev1-DevOps
 3. Ver todas las ramas:
