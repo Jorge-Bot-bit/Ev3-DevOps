@@ -18,11 +18,11 @@ El respositorio cuenta con los siguientes archivos:
 * hotfix_v1.0.1.js: Corrección de emergencia (creado en la rama hotfix/error-critico).
 
  3. Uso Local de Consola Git Bash
-1. Clonar el proyecto:
+3.1. Clonar el proyecto:
    **git clone https://github.com/USUARIO_LOCAL/Ev1-DevOps.git**
-2. Entrar a la carpeta:
+3.2. Entrar a la carpeta:
    cd Ev1-DevOps
-3. Ver todas las ramas:
+3.3. Ver todas las ramas:
    git branch -a
 
  4. Convenciones
