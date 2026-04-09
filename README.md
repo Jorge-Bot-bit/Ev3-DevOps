@@ -27,5 +27,5 @@ git branch -a
 
  4. Convenciones
  Mensajes de commit: Se uso el prefijo Hotfix: para errores críticos.
- Flujo de integración: Todo cambio paso por un **Pull Request** antes de unirse a la rama principal.
+ Flujo de integración: Todo cambio paso por un Pull Request antes de unirse a la rama principal.
 
