@@ -1,0 +1,21 @@
+name: CI-Ev1-DevOps-JorgeRob  
+
+on:
+  push:
+    branches: [ "develop" ] 
+  pull_request:
+    branches: [ "main" ]    
+
+jobs:
+  verificacion:
+    runs-on: ubuntu-latest  
+
+    steps:
+      - name: Clonar codigo
+        uses: actions/checkout@v4
+
+      - name: Mensaje de exito
+        run: |
+          echo "¡Hola! de GitHub Actions."
+          echo "Se Ha detectado un cambio en la rama."
+          echo "Validando el entorno... ¡Todo en Orden!"
