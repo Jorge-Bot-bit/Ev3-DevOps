@@ -1,0 +1,40 @@
+name: DevOps Master Pipeline
+
+on:
+  push:
+    branches: [ "main", "develop", "feature/**", "hotfix/**" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  quality-and-security:
+    name: Análisis de Calidad y Seguridad
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Unit Tests
+        run: |
+          echo "Ejecutando pruebas unitarias en las ramas de trabajo..."
+          # Aquí iría: npm test (para JS) o ./vendor/bin/phpunit (para PHP)
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master 
+        continue-on-error: false 
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  build-and-deploy:
+    name: Build y Despliegue Simulado
+    needs: quality-and-security
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: docker build -t ev2-devops-app:${{ github.sha }} .
+
+      - name: Simulate Deployment
+        run: |
+          docker compose up -d
+          echo "Despliegue exitoso en entorno de contenedores."
