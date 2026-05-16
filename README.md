@@ -18,7 +18,7 @@ El pipeline está automatizado mediante github actions --> en el archivo devops-
 # La Seguridad
 *Snyk*: Lo integre en el pipeline para escanear vulnerabilidades en dependencias.
 *Bloqueos*: Configure el pipeline para detenerse si el análisis de seguridad falla.
-*Dependabot*: Le habilite la opcion para alertas continuas de seguridad y actualizaciones automáticas.
+**Dependabot**: Le habilite la opcion para alertas continuas de seguridad y actualizaciones automáticas.
 
 # La Trazabilidad
-Se puede verificar el historial de ejecuciones, pruebas y despliegues en la pestaña *actions*.
+Se puede verificar el historial de ejecuciones, pruebas y despliegues en la pestaña actions.
