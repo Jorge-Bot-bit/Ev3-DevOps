@@ -15,8 +15,7 @@ jobs:
 
       - name: Run Unit Tests
         run: |
-          echo "Ejecutando pruebas unitarias en las ramas de trabajo..."
-          # Aquí iría: npm test (para JS) o ./vendor/bin/phpunit (para PHP)
+          node test.js
           
       - name: Install Dependencies
         run: npm install
