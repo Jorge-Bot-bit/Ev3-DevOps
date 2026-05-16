@@ -6,8 +6,8 @@ Evaluacion 2 -
 En esta etapa cree el pipeline automatizado junto a diversas alertas y medidas de seguridad
 
 # Parte de Contenerización 
-*Dockerfile*: Archivo configurado para construir una imagen.
-*Docker Compose*: Utilizado para la orquestación del servicio y simulación de despliegue.
+**Dockerfile**: Archivo configurado para construir una imagen.
+**Docker Compose**: Utilizado para la orquestación del servicio y simulación de despliegue.
 
 # El Pipeline
 El pipeline está automatizado mediante github actions --> en el archivo devops-pipeline.yml y realiza:
