@@ -47,6 +47,17 @@ jobs:
     - name: Clonar código
       uses: actions/checkout@v4
 
+    - name: 🔍 Ejecutar Script de Auditoría de Seguridad
+      run: |
+        echo "Iniciando auditoría de cumplimiento de código..."
+        # Busca si alguien dejó la palabra "PASSWORD" o "SECRET" escrita en texto plano en los archivos
+        if grep -rni "password=" . --exclude-dir=.github || grep -rni "aws_secret_access_key" . ; then
+          echo "❌ ERROR CRÍTICO DE CUMPLIMIENTO: Se detectaron posibles credenciales expuestas en el código."
+          exit 1
+        else
+          echo "✅ AUDITORÍA EXITOSA: El código cumple con las políticas de seguridad."
+        fi
+
     - name: Configurar acceso a Kubernetes en AWS
       env:
         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
