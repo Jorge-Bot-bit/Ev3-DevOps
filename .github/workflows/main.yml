@@ -57,6 +57,6 @@ jobs:
 
     - name: Desplegar en el clúster de AWS
       run: |
-        kubectl apply -f k8s/deployment.yml --validate=false
+        kubectl apply -f k8s/deployment.yml --insecure-skip-tls-verify=true
         # Verifica que los pods arranquen correctamente
-        kubectl rollout status deployment/Ev3-DevOps-deployment
+        kubectl rollout status deployment/Ev3-DevOps-deployment --insecure-skip-tls-verify=true
