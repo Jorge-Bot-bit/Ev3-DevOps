@@ -38,7 +38,7 @@ jobs:
         context: .
         push: true
         # Respeta exactamente el mismo nombre del deployment.yml
-        tags: jorge1331/Ev3-DevOps:latest 
+        tags: jorge1331/ev3-devops:latest 
 
   deploy:
     needs: build # No se ejecuta si la compilación o subida a Docker Hub falla

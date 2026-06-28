@@ -18,7 +18,7 @@ spec:
       containers:
       - name: app-container
         # REEMPLAZA "tu-usuario-dockerhub" por tu usuario real de Docker Hub
-        image: jorge1331/Ev3-DevOps:latest 
+        image: jorge1331/ev3-devops:latest 
         ports:
         - containerPort: 3000
         imagePullPolicy: Always
