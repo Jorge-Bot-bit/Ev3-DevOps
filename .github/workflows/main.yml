@@ -59,4 +59,4 @@ jobs:
       run: |
         kubectl apply -f k8s/deployment.yml --insecure-skip-tls-verify=true
         # Verifica que los pods arranquen correctamente
-        kubectl rollout status deployment/Ev3-DevOps-deployment --insecure-skip-tls-verify=true
+        kubectl rollout status deployment/ev3-devops-deployment --insecure-skip-tls-verify=true

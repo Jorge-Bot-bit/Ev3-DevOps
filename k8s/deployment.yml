@@ -4,7 +4,7 @@ metadata:
   name: Ev3-DevOps-deployment
   labels:
     app: Ev3-DevOps
-namespace: default
+  namespace: default
 spec:
   replicas: 2 # Levantará 2 copias automáticas por alta disponibilidad
   selector:
@@ -27,7 +27,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: Ev3-DevOps-service
+  name: ev3-devops-service
   namespace: default
 spec:
   type: NodePort # Expone la app hacia el exterior usando la IP de AWS
