@@ -1,0 +1,62 @@
+name: Pipeline-CD-Ev3-DevOps
+
+on:
+  push:
+    branches: [ "main", "develop" ] # Se ejecutará al empujar cambios a cualquiera de estas ramas
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  verificacion:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clonar codigo
+      uses: actions/checkout@v4
+
+    - name: Mensaje de exito
+      run: |
+        echo "¡Hola! de GitHub Actions."
+        echo "Se Ha detectado un cambio en la rama."
+        echo "Validando el entorno... ¡Todo en Orden!"
+
+  build:
+    needs: verificacion # Espera que la verificación pase con éxito
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clonar código
+      uses: actions/checkout@v4
+
+    - name: Iniciar sesión en Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Construir y Subir Imagen de Docker
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        # Respeta exactamente el mismo nombre del deployment.yml
+        tags: jorge1331/ev3-devops:latest 
+
+  deploy:
+    needs: build # No se ejecuta si la compilación o subida a Docker Hub falla
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clonar código
+      uses: actions/checkout@v4
+
+    - name: Configurar acceso a Kubernetes en AWS
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
+      run: |
+        mkdir -p ~/.kube
+        echo "$KUBE_CONFIG" > ~/.kube/config
+        chmod 600 ~/.kube/config
+
+    - name: Desplegar en el clúster de AWS
+      run: |
+        kubectl apply -f k8s/deployment.yml
+        # Verifica que los pods arranquen correctamente
+        kubectl rollout status deployment/Ev3-DevOps-deployment

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Ev3-DevOps-deployment
+  labels:
+    app: Ev3-DevOps
+namespace: default
+spec:
+  replicas: 2 # Levantará 2 copias automáticas por alta disponibilidad
+  selector:
+    matchLabels:
+      app: Ev3-DevOps
+  template:
+    metadata:
+      labels:
+        app: Ev3-DevOps
+    spec:
+      containers:
+      - name: app-container
+        # REEMPLAZA "tu-usuario-dockerhub" por tu usuario real de Docker Hub
+        image: jorge1331/ev3-devops:latest 
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: Ev3-DevOps-service
+  namespace: default
+spec:
+  type: NodePort # Expone la app hacia el exterior usando la IP de AWS
+  selector:
+    app: Ev3-DevOps
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 32000 # Puerto por el que se entra desde el navegador
