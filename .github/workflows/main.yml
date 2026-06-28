@@ -51,7 +51,7 @@ jobs:
       run: |
         echo "Iniciando auditoría de cumplimiento de código..."
         # Busca si alguien dejó la palabra "PASSWORD" o "SECRET" escrita en texto plano en los archivos
-        if grep -rni "password=" . --exclude-dir=.github || grep -rni "aws_secret_access_key" . ; then
+        if grep -rni "password=" . --exclude-dir=.github || grep -rni "aws_secret_access_key" . --exclude-dir=.github; then
           echo "❌ ERROR CRÍTICO DE CUMPLIMIENTO: Se detectaron posibles credenciales expuestas en el código."
           exit 1
         else
