@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Ev3-DevOps-deployment
+  name: ev3-devops-deployment
   labels:
     app: Ev3-DevOps
   namespace: default
