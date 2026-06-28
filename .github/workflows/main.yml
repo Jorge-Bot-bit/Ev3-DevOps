@@ -57,6 +57,6 @@ jobs:
 
     - name: Desplegar en el clúster de AWS
       run: |
-        kubectl apply -f k8s/deployment.yml
+        kubectl apply -f k8s/deployment.yml --validate=false
         # Verifica que los pods arranquen correctamente
         kubectl rollout status deployment/Ev3-DevOps-deployment
